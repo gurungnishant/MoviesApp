@@ -1,0 +1,70 @@
+// .card {
+//   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.986);
+//   transition: 0.3s;
+//   width: 80%;
+//   border-radius: 5px;
+// }
+
+// .card:hover {
+//   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.925);
+// }
+
+// img {
+//   border-radius: 5px 5px 0 0;
+// }
+
+// .card-body {
+//   padding: 2px 16px 2px;
+// }
+
+.card {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  .play-icon {
+    color: #0fe5d5;
+    font-size: 45px;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    z-index: 100;
+    opacity: 0;
+    transform: translate(-50%, -50%);
+  }
+  img {
+    border-radius: 5px;
+  }
+
+  .subtitle {
+    color: #fff;
+    opacity: 0.6;
+    font-size: 12px;
+    margin-bottom: 0;
+  }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+.card-title {
+  width: 175px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 16px;
+  color: #fff;
+}
+
+.card:hover .card-img-top {
+  opacity: 60%;
+}
+
+.card:hover .card-title {
+  color: #0fe5d5;
+}
+
+.card:hover .play-icon {
+  opacity: 1;
+}
