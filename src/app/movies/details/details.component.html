@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h4>{{movieObj?.title}}</h4>
+    <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="bsModalRef.hide()">
+        <span aria-hidden="true" class="visually-hidden">&times;</span>
+      </button>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-3">
+            <img src={{movieObj?.image}}>
+        </div>
+        <div class="col-9">
+            <div class="row">
+                <h3>{{movieObj?.fullTitle}}</h3>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    {{movieObj?.year}}
+                </div>
+                <div class="col-1">
+                    {{movieObj?.imDbRating}}
+                </div>
+                <div class="col-4">
+                    {{movieObj?.imDbRatingCount}} Reviews
+                </div>
+            </div>
+            <div class="row">
+                <strong>Cast & Crew:</strong>
+            </div>
+            <div class="row">
+                {{movieObj?.crew}}
+            </div>
+            <div class="row">
+                <strong>Synopsis</strong>
+            </div>
+            <div class="row">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse placeat voluptas odit. Repellendus sequi earum voluptatem similique sapiente corporis, consequuntur nobis hic numquam facere nulla veniam alias sint amet quisquam.
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+
+<!-- <div class="modal-footer">
+    <button type="button" class="btn btn-default" (click)="bsModalRef.hide()">{{closeBtnName}}</button>
+</div> -->
