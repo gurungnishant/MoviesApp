@@ -1,10 +1,10 @@
-main {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr ;
-    column-gap: 2%;
-    row-gap: 2%;
+// main {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr 1fr ;
+//     column-gap: 2%;
+//     row-gap: 2%;
+// }
+
+#movie-list.row {
+  margin: 0px;
 }
-
-
-
-
