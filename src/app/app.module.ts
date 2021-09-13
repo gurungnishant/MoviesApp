@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './movies/dashboard/dashboard.component';
 import { MovieItemsComponent } from './movies/movie-items/movie-items.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from './movies/login/login.component';
+import { UsersService } from './services/users.service';
 
 
 
@@ -14,7 +16,8 @@ import { FormsModule } from '@angular/forms';
   declarations: [
     AppComponent,
     DashboardComponent,
-    MovieItemsComponent
+    MovieItemsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,12 @@
+<div class="login">
+    <form #logindata = "ngForm" (ngSubmit)="onClickSubmit(logindata.value)">
+        <input type = "text" name="user_name" placeholder="Username" ngModel>
+        <br>
+        <input type="password" name="user_pwd" placeholder="Password" ngModel>
+        <br>
+        <input type="submit" value="Login">
+    </form>
+</div>
+<div *ngIf="error_cond">
+    <p>Incorrect Username or Password</p>
+</div>
