@@ -1,26 +1,8 @@
-// .card {
-//   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.986);
-//   transition: 0.3s;
-//   width: 80%;
-//   border-radius: 5px;
-// }
-
-// .card:hover {
-//   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.925);
-// }
-
-// img {
-//   border-radius: 5px 5px 0 0;
-// }
-
-// .card-body {
-//   padding: 2px 16px 2px;
-// }
 
 .card {
   cursor: pointer;
   border: none;
-  background: transparent;
+  background-color: #383838;
   .play-icon {
     color: #0fe5d5;
     font-size: 45px;
@@ -32,7 +14,11 @@
     transform: translate(-50%, -50%);
   }
   img {
+    padding-left: 1px;
+    padding-right: 1px;
+    padding-top: 1px;
     border-radius: 5px;
+
   }
 
   .subtitle {
@@ -47,6 +33,9 @@
   display: flex;
   flex-direction: column;
   padding: 0;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
 }
 .card-title {
   width: 175px;
@@ -67,4 +56,10 @@
 
 .card:hover .play-icon {
   opacity: 1;
+}
+
+
+.button-style{
+  background-color:#ffa31a;
+  
 }
