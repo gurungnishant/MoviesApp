@@ -17,7 +17,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     DetailsComponent,
     LoginComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
     ProfileComponent,
   ],
   imports: [

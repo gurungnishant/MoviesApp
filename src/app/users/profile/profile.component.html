@@ -1,180 +1,184 @@
-<div class="profile">
-    <div class="row">
-        <div class="col-3">
-            <div class="row">
-                <div class="col">
-                    <img src="https://english.columbia.edu/themes/custom/columbia/assets/img/people-default.svg">
-                </div>
-            </div>
-            <div class="username">
-                <div class="row">
-                    <div class="col-7 name">
-                        <p>{{user?.name}}</p>
-                    </div>
-                    <div class="col-5">
-                        <p class="location">
-                            <i class="fa fa-map-marker-alt"></i>
-                            <span>{{user?.address.city}}</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
-                        <p style="opacity: 50%;">Angular Developer</p>
-                    </div>
-                </div>
-            </div>
+<app-header></app-header>
+<div class="profile bg">
+  <div class="row">
+    <div class="col-4">
+      <div class="row">
+        <div class="col">
+          <img
+            src="https://english.columbia.edu/themes/custom/columbia/assets/img/people-default.svg"
+          />
         </div>
-        <div class="col-7">
-            <div class="row">
-                <div class="col">
-                    <tabset>
-                        <tab class="tabstyle" heading="About" id="tab1">
-                            <div class="row">
-                                <div class="col">
-                                    <div class="contactInfo">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="infohead">CONTACT INFORMATION</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="label">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Phone</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Address</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Email</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Site</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-7">
-                                                <div class="value">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>{{user?.phone}}</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <p><span>{{user?.address.street}},</span><span>{{user.address.suite}},</span><span>{{user.address.city}},</span><span>{{user.address.zipcode}}</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>{{user?.email}}</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>{{user?.website}}</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="basicInfo">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="infohead">BASIC INFORMATION</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-
-                                            <div class="col-4">
-                                                <div class="label">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Birthday</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Gender</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="value">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>7th Nov 1996</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Female</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="workInfo">
-                                        <div class="row">
-                                            <div class="col">
-                                                <p class="infohead">WORK INFORMATION</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-4">
-                                                <div class="label">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>Company</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>About</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="value">
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>{{user?.company.name}}</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col">
-                                                            <label>{{user?.company.catchPhrase}}</label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </tab>
-                        <tab class="tabstyle" heading="Favorites" id="tab2"></tab>
-                    </tabset>
-                </div>
-            </div>
+      </div>
+      <div class="username">
+        <div class="row">
+          <div class="col-6 name">
+            <p>{{ user?.name }}</p>
+          </div>
+          <div class="col-6">
+            <p class="location">
+              <i class="fa fa-map-marker-alt"></i>
+              <span>{{ user?.address.city }}</span>
+            </p>
+          </div>
         </div>
+        <div class="row">
+          <div class="col">
+            <p style="opacity: 50%">Angular Developer</p>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="col-8">
+      <div class="row">
+        <div class="col">
+          <tabset>
+            <tab class="tabstyle" heading="About" id="tab1">
+              <div class="row">
+                <div class="col">
+                  <div class="contactInfo">
+                    <div class="row">
+                      <div class="col">
+                        <p class="infohead">CONTACT INFORMATION</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="label">
+                          <div class="row">
+                            <div class="col">
+                              <label>Phone</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>Address</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>Email</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>Site</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-7">
+                        <div class="value">
+                          <div class="row">
+                            <div class="col">
+                              <label>{{ user?.phone }}</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <p>
+                                <span>{{ user?.address.street }},</span
+                                ><span>{{ user.address.suite }},</span
+                                ><span>{{ user.address.city }},</span
+                                ><span>{{ user.address.zipcode }}</span>
+                              </p>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>{{ user?.email }}</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>{{ user?.website }}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="basicInfo">
+                    <div class="row">
+                      <div class="col">
+                        <p class="infohead">BASIC INFORMATION</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="label">
+                          <div class="row">
+                            <div class="col">
+                              <label>Birthday</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>Gender</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="value">
+                          <div class="row">
+                            <div class="col">
+                              <label>7th Nov 1996</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>Female</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="workInfo">
+                    <div class="row">
+                      <div class="col">
+                        <p class="infohead">WORK INFORMATION</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-4">
+                        <div class="label">
+                          <div class="row">
+                            <div class="col">
+                              <label>Company</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>About</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-4">
+                        <div class="value">
+                          <div class="row">
+                            <div class="col">
+                              <label>{{ user?.company.name }}</label>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col">
+                              <label>{{ user?.company.catchPhrase }}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </tab>
+            <tab class="tabstyle" heading="Favorites" id="tab2"></tab>
+          </tabset>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

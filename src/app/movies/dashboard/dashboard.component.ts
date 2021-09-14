@@ -1,7 +1,8 @@
+import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { Movie } from '../movie';
-
 
 // let moviedata =  {
 //   "id": "tt0111161",
@@ -15,24 +16,27 @@ import { Movie } from '../movie';
 //   "imDbRatingCount": "2457121"
 // }
 
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  movies : Movie[] = [];
+  movies: Movie[] = [];
 
-
-  constructor( private movieObj : MoviesService) {   }
+  constructor(
+    private movieObj: MoviesService,
+    private userService: UsersService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
-    this.movies = this.movieObj.getAllMovies();
-   // this.movies[0].id;
+    if (this.userService.getLoggedInStatus()) {
+      this.movies = this.movieObj.getAllMovies();
+    } else {
+      this.router.navigate(['/login']);
+    }
+
+    // this.movies[0].id;
   }
-
-
-
-
 }

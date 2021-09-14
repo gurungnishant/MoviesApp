@@ -1,22 +1,36 @@
-
-
-<nav class=" navbar navbar-expand-sm button-navbar-style text-navbar-style">
-    <a href="#" class="text-navbar-movie-style" > <i class="fas fa-film fa-2x" style="padding-right:10px ;"></i> Movies-App</a>
-    <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
+<nav class="navbar navbar-expand-sm button-navbar-style text-navbar-style">
+  <a routerLink="/home/{{ userId }}" class="text-navbar-movie-style">
+    <i class="fas fa-film fa-2x" style="padding-right: 10px"></i> Movies-App</a
+  >
+  <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
         <span class="navbar-toggler-icon"></span>
     </button> -->
-    <div class="collapse navbar-collapse text-navbar-style" id="navbarMenu" >
-        <ul class="navbar-nav ml-auto ">
-        <div>
-            <li class="nav-right-icon-vert">
-                <a  href="#" class="user-icon"><i class="fas fa-user-circle fa-2x"></i> <div>user profile</div></a>
-            </li>
-        </div>
+  <div class="collapse navbar-collapse text-navbar-style" id="navbarMenu">
+    <ul class="navbar-nav ml-auto">
+      <div>
+        <li class="nav-right-icon-vert">
+          <a routerLink="/home/{{ userId }}" class="user-icon">
+            <i class="fas fa-video fa-2x"></i>
+            <div>All Movies</div></a
+          >
+        </li>
+      </div>
+      <div>
+        <li class="nav-right-icon-vert">
+          <a routerLink="/profile/{{ userId }}" class="user-icon"
+            ><i class="fas fa-user-circle fa-2x"></i>
+            <div>user profile</div></a
+          >
+        </li>
+      </div>
 
-            <li class="nav-right-icon-vert" >
-                <a href="#" class="signout-icon"><i class="fas fa-sign-out-alt fa-2x"></i><div>log out</div><output></output></a>
-            </li>
-        </ul>
-    </div>
-
+      <li class="nav-right-icon-vert">
+        <a class="signout-icon" (click)="logOutUser()"
+          ><i class="fas fa-sign-out-alt fa-2x"></i>
+          <div>log out</div>
+          <output></output
+        ></a>
+      </li>
+    </ul>
+  </div>
 </nav>
