@@ -1,11 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 /* Importing Bootstrap SCSS file. */
+
 @import "~bootstrap/scss/bootstrap";
 
 /* Importing Datepicker SCSS file. */
-@import "~ngx-bootstrap/datepicker/bs-datepicker";
 
+@import "~ngx-bootstrap/datepicker/bs-datepicker";
 body {
-  font-family: "Hahmlet", serif;
+    font-family: "Hahmlet", serif;
+}
+
+.nav-tabs .nav-item .nav-link.active {
+    background-color: #f5c518 !important;
+    color: #111
+}
+
+.nav-tabs .nav-item .nav-link {
+    color: #fff;
 }

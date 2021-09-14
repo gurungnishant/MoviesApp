@@ -11,6 +11,8 @@ import { DetailsComponent } from './movies/details/details.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginComponent } from './movies/login/login.component';
 import { UsersService } from './services/users.service';
+import { ProfileComponent } from './users/profile/profile.component';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { UsersService } from './services/users.service';
     DashboardComponent,
     MovieItemsComponent,
     DetailsComponent,
-    LoginComponent
+    LoginComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,8 +29,9 @@ import { UsersService } from './services/users.service';
     BrowserAnimationsModule,
     FormsModule,
     ModalModule.forRoot(),
+    TabsModule.forRoot(),
   ],
   providers: [UsersService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
