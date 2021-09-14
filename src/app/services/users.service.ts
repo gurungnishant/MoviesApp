@@ -56,6 +56,7 @@ let userdata: any[] = [
   providedIn: 'root',
 })
 export class UsersService {
+  isLoggedin: boolean = false;
   constructor() {}
 
   getUsers(input_username: string, input_pwd: string) {
@@ -68,11 +69,13 @@ export class UsersService {
         ) {
           checkstatus[0] = true;
           checkstatus[1] = userdata[i].id;
+          this.isLoggedin = true;
         }
       }
       if (checkstatus[0] == false) {
         checkstatus[0] = false;
         checkstatus[1] = 404;
+        this.isLoggedin = false;
       }
     }
     return checkstatus;
@@ -85,5 +88,13 @@ export class UsersService {
       user = userdata[userIndex];
     }
     return user;
+  }
+
+  getLoggedInStatus() {
+    return this.isLoggedin;
+  }
+
+  logoutUser() {
+    this.isLoggedin = false;
   }
 }
