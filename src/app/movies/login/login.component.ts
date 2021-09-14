@@ -42,5 +42,9 @@ export class LoginComponent implements OnInit {
       this.error_cond = true
     }
   }
+  registerUsers(formobj : any){
+    console.log("The registered username is " + formobj.user_name)
+    window.location.reload()
+  }
 
 }
