@@ -11,16 +11,20 @@ import { Movie } from '../movie';
 })
 export class DashboardComponent implements OnInit {
   movies: Movie[] = [];
+  userLogStatus: any;
 
   constructor(
     private movieObj: MoviesService,
     private userService: UsersService,
-    private router: Router
+    private router: Router,
+    private userLoggedInData: UsersService
   ) {}
 
+
   ngOnInit(): void {
-    if (this.userService.getLoggedInStatus()) {
-      this.movieObj.getAllMovies().subscribe((data) => {
+    this.userLoggedInData.currentStatus.subscribe(userLogStatus => this.userLogStatus = userLogStatus)
+    if (this.userLogStatus) {
+        this.movieObj.getAllMovies().subscribe((data) => {
         this.movies = data;
       });
     } else {

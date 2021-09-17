@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {BehaviorSubject} from 'rxjs'
 
 let checkstatus: any[] = [];
 let userdata: any[] = [
@@ -56,8 +57,20 @@ let userdata: any[] = [
   providedIn: 'root',
 })
 export class UsersService {
-  isLoggedin: boolean = false;
+  //isLoggedin: boolean = false;
+
+  private isLoggedin:BehaviorSubject<any> = new BehaviorSubject(false);
+  currentStatus = this.isLoggedin.asObservable();
+
+
   constructor() {}
+
+  changeMessage(message: boolean) {
+    this.isLoggedin.next(message)
+    console.log(this.isLoggedin)
+  }
+
+
 
   getUsers(input_username: string, input_pwd: string) {
     checkstatus[0] = false;
@@ -69,13 +82,15 @@ export class UsersService {
         ) {
           checkstatus[0] = true;
           checkstatus[1] = userdata[i].id;
-          this.isLoggedin = true;
+       //   this.isLoggedin = true;
+       this.changeMessage(true);
         }
       }
       if (checkstatus[0] == false) {
         checkstatus[0] = false;
         checkstatus[1] = 404;
-        this.isLoggedin = false;
+       // this.isLoggedin = false;
+       this.changeMessage(false);
       }
     }
     return checkstatus;
@@ -90,11 +105,18 @@ export class UsersService {
     return user;
   }
 
-  getLoggedInStatus() {
-    return this.isLoggedin;
-  }
+  // getLoggedInStatus() {
+  //   return this.isLoggedin;
+  // }
 
-  logoutUser() {
-    this.isLoggedin = false;
-  }
+  // logoutUser() {
+  //   this.isLoggedin = false;
+  // }
+
+
+
+
+
+
+
 }
