@@ -16,6 +16,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     FormsModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
