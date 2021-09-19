@@ -17,6 +17,7 @@ import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
+    TvshowsItemsComponent
   ],
   imports: [
     BrowserModule,
