@@ -42,7 +42,7 @@
                 <div class="login">
                     <h3 class="blacky">Login</h3>
                     <div class="wholeform">
-                        <form #logindata = "ngForm" (ngSubmit)="onClickSubmit(logindata.value)">
+                        <form #logindata = "ngForm" (ngSubmit)="loginUser(logindata.value)">
                             <div class="form-label-group">
                                 <label for="emailid" class="blacky">Username</label>
                                 <input type = "text" name="user_name" id="emailid" placeholder="Username" class="form-control" required ngModel>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class MoviesService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   getAllMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>('http://localhost:3000/movies');

@@ -22,7 +22,14 @@
         "name": "Romaguera-Crona",
         "catchPhrase": "Multi-layered client-server neural-net",
         "bs": "harness real-time e-markets"
-      }
+      },
+      "favorites": [
+        "tt0068646",
+        "tt0111161",
+        "tt0050083",
+        "tt0071562",
+        "tt0133093"
+      ]
     },
     {
       "id": 2,
@@ -46,7 +53,11 @@
         "name": "Deckow-Crist",
         "catchPhrase": "Proactive didactic contingency",
         "bs": "synergize scalable supply-chains"
-      }
+      },
+      "favorites": [
+        "tt0071562",
+        "tt0137523"
+      ]
     },
     {
       "id": 3,
@@ -5743,13 +5754,6 @@
       "crew": "Patrick McGoohan, Angelo Muscat",
       "imDbRating": "8.4",
       "imDbRatingCount": "13057"
-    }
-  ],
-  "favorites": [
-    {
-      "id": "1",
-      "userId": "1",
-      "movies": [1, 2]
     }
   ]
 }

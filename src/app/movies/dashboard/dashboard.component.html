@@ -6,7 +6,7 @@
       class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
       *ngFor="let movie of filteredMovies; let i = index"
     >
-      <app-movie-items [movie]="movie"></app-movie-items>
+      <app-movie-items [movie]="movie" [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id) >=0" (addOrRemoveFavorites)="addToFavs($event)"></app-movie-items>
     </div>
   </div>
 </div>

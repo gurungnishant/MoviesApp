@@ -1,5 +1,7 @@
 <div class="card">
   <i class="far fa-play-circle play-icon"></i>
+  <i *ngIf="isFav" class="fas fa-heart fav-icon" (click)="removeFromFavs()"></i>
+  <i *ngIf="!isFav" class="far fa-heart fav-icon" (click)="addToFavs()"></i>
   <img [src]="movie.image" class="card-img-top" alt="..." />
 
   <div class="card-body">
