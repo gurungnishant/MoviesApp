@@ -12,23 +12,42 @@ import { Movie } from '../movie';
 export class DashboardComponent implements OnInit {
   movies: Movie[] = [];
   userLogStatus: any;
-
+  currentUserFavs: any[] = [];
   constructor(
     private movieObj: MoviesService,
     private userService: UsersService,
-    private router: Router,
-    private userLoggedInData: UsersService
-  ) {}
+    private router: Router
+  ) { }
 
 
   ngOnInit(): void {
-    this.userLoggedInData.currentStatus.subscribe(userLogStatus => this.userLogStatus = userLogStatus)
+    this.userService.currentStatus.subscribe(userLogStatus => this.userLogStatus = userLogStatus)
+    this.currentUserFavs = this.userService.currentUser['favorites'] || [];
     if (this.userLogStatus) {
-        this.movieObj.getAllMovies().subscribe((data) => {
+      this.movieObj.getAllMovies().subscribe((data) => {
         this.movies = data;
       });
     } else {
       this.router.navigate(['/login']);
     }
+  }
+
+
+  addToFavs(movieId: string) {
+    if (this.currentUserFavs.length > 0) {
+      if (this.currentUserFavs.indexOf(movieId) < 0) {
+        this.currentUserFavs.push(movieId)
+      }
+      else {
+        const index = this.currentUserFavs.indexOf(movieId);
+        this.currentUserFavs.splice(index, 1);
+      }
+    } else {
+      this.currentUserFavs.push(movieId);
+    }
+    console.log(this.currentUserFavs);
+    this.userService.addToFavs(this.currentUserFavs).subscribe(data => {
+      console.log(data);
+    });
   }
 }

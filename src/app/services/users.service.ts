@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject} from 'rxjs'
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs'
 
 let checkstatus: any[] = [];
 let userdata: any[] = [
@@ -58,42 +59,53 @@ let userdata: any[] = [
 })
 export class UsersService {
   //isLoggedin: boolean = false;
-
-  private isLoggedin:BehaviorSubject<any> = new BehaviorSubject(false);
+  currentUser: any = null;
+  private isLoggedin: BehaviorSubject<any> = new BehaviorSubject(false);
   currentStatus = this.isLoggedin.asObservable();
 
 
-  constructor() {}
+  constructor(private http: HttpClient) { }
 
   changeMessage(message: boolean) {
     this.isLoggedin.next(message)
     console.log(this.isLoggedin)
+    if (!message) {
+      this.currentUser = null;
+    }
   }
 
+  getUsers(): Observable<any[]> {
+    return this.http.get<any[]>("http://localhost:3000/users");
+  }
 
+  // getUsers(input_username: string, input_pwd: string) {
+  //   checkstatus[0] = false;
+  //   if (input_username != '' && input_pwd != '') {
+  //     for (let i = 0; i < userdata.length; i++) {
+  //       if (
+  //         userdata[i].username == input_username &&
+  //         userdata[i].password == input_pwd
+  //       ) {
+  //         checkstatus[0] = true;
+  //         checkstatus[1] = userdata[i].id;
+  //         //   this.isLoggedin = true;
+  //         this.changeMessage(true);
+  //         this.currentUser = userdata[i];
+  //       }
+  //     }
+  //     if (checkstatus[0] == false) {
+  //       checkstatus[0] = false;
+  //       checkstatus[1] = 404;
+  //       // this.isLoggedin = false;
+  //       this.changeMessage(false);
+  //     }
+  //   }
+  //   return checkstatus;
+  // }
 
-  getUsers(input_username: string, input_pwd: string) {
-    checkstatus[0] = false;
-    if (input_username != '' && input_pwd != '') {
-      for (let i = 0; i < userdata.length; i++) {
-        if (
-          userdata[i].username == input_username &&
-          userdata[i].password == input_pwd
-        ) {
-          checkstatus[0] = true;
-          checkstatus[1] = userdata[i].id;
-       //   this.isLoggedin = true;
-       this.changeMessage(true);
-        }
-      }
-      if (checkstatus[0] == false) {
-        checkstatus[0] = false;
-        checkstatus[1] = 404;
-       // this.isLoggedin = false;
-       this.changeMessage(false);
-      }
-    }
-    return checkstatus;
+  setCurrentUser(user: any) {
+    this.currentUser = user;
+    this.changeMessage(true);
   }
 
   getUser(id: number) {
@@ -114,6 +126,17 @@ export class UsersService {
   // }
 
 
+  addToFavs(favoritesData: any) {
+    const userId = this.currentUser.id;
+    this.setCurrentUser({ ...this.currentUser, favorites: [...favoritesData] })
+    return this.http.patch(`http://localhost:3000/users/${userId}`,
+      { "favorites": [...favoritesData] },
+      {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      })
+  }
 
 
 

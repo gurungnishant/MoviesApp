@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DetailsComponent } from '../details/details.component';
 import { Movie } from '../movie';
@@ -10,11 +10,13 @@ import { Movie } from '../movie';
 })
 export class MovieItemsComponent implements OnInit {
   @Input() movie: Movie = {};
+  @Input() isFav: boolean = false;
+  @Output() addOrRemoveFavorites = new EventEmitter();
   bsModalRef?: BsModalRef;
 
-  constructor(private modalService: BsModalService) {}
+  constructor(private modalService: BsModalService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
   openModalWithComponent(id: any) {
     const initialState = {
@@ -24,5 +26,13 @@ export class MovieItemsComponent implements OnInit {
       initialState,
       class: 'gray modal-lg modal-dialog-centered',
     });
+  }
+
+  addToFavs() {
+    this.addOrRemoveFavorites.emit(this.movie.id);
+  }
+
+  removeFromFavs() {
+    this.addOrRemoveFavorites.emit(this.movie.id);
   }
 }
