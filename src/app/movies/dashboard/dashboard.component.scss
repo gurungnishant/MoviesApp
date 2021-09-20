@@ -8,6 +8,16 @@
 #movie-list.row {
   margin: 0px;
   padding-bottom: 30px;
-  
 }
 
+a.more-link {
+  color: #fff;
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 12px;
+  &:hover {
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}
