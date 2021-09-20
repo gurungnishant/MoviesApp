@@ -18,8 +18,7 @@ export class DashboardComponent implements OnInit {
   tvshows : tv[] = [];
   userLogStatus: any;
   tvOrMovie: any;
-  isTv : boolean = false;
-  isMovie: boolean = true;
+  
 //tvormovieselected is a string that determines which movie or tv items to show
   constructor(
     private movieObj: MoviesService,
@@ -52,18 +51,34 @@ export class DashboardComponent implements OnInit {
       this.router.navigate(['/login']);
     }
 
-    if(this.tvOrMovie == "TV"){
-      this.isTv = true;
-      this.isMovie = false;
-      console.log("dashboard now says: "+this.tvOrMovie);
-    }
-    else if (this.tvOrMovie == "MOVIE") {
-      this.isTv = false;
-      this.isMovie = true;
-      console.log("dashboard now says: "+this.tvOrMovie);
-    }
+
 
 
 
   }
+
+
+  // isTv : boolean = false;
+  // isMovie: boolean = true;
+
+
+
 }
+
+
+  // if(this.tvOrMovie == "TV"){
+  //   this.isTv = true;
+  //   this.isMovie = false;
+  //   console.log("dashboard now says: "+this.tvOrMovie);
+  // }
+
+  // else if (this.tvOrMovie == "MOVIE") {
+  //   this.isTv = false;
+  //   this.isMovie = true;
+  //   console.log("dashboard now says: "+this.tvOrMovie);
+  // }
+
+
+
+
+
