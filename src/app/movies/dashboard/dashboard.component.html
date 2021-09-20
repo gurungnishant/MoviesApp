@@ -1,29 +1,31 @@
 <app-header></app-header>
 
 <div *ngIf="tvOrMovie === 'MOVIE'">
-<div class="row bg" id="movie-list">
-  <div 
-    class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
-    *ngFor="let movie of movies; let i = index"
-  >
-    <app-movie-items [movie]="movie"></app-movie-items>
+  <div class="row bg" id="movie-list">
+    <div 
+      class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
+      *ngFor="let movie of filteredMovies; let i = index"
+    >
+      <app-movie-items [movie]="movie"></app-movie-items>
+    </div>
   </div>
 </div>
-</div>
 
-  <div *ngIf="tvOrMovie === 'TV'">
+<div *ngIf="tvOrMovie === 'TV'">
 
-<div class="row bg" id="movie-list">
-  <div
-    class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
-    *ngFor="let movie of tvshows; let i = index"
-  >
-    <app-movie-items [movie]="movie"></app-movie-items>
+  <div class="row bg" id="movie-list">
+    <div
+      class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
+      *ngFor="let movie of tvshows; let i = index"
+    >
+      <app-movie-items [movie]="movie"></app-movie-items>
+    </div>
   </div>
 </div>
+
+<div class="row bg justify-content-end no-gutters" *ngIf="tvOrMovie === 'MOVIE'">
+  <div class="col-1 mb-3">
+    <a (click)="showMoreMovies()" class="more-link">See More</a>
+  </div>
 </div>
-
-
-
-<!-- <div *ngFor="let movie of movies; let i = index"></div> -->
 <app-footer></app-footer>

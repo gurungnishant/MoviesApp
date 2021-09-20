@@ -14,7 +14,11 @@ import { tv } from '../tv';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-  movies: Movie[] = [];
+
+  allMovies: Movie[] = [];
+  filteredMovies: Movie[] = [];
+  moviesCountOnInitialLoad: number = 12;
+  moviesToShow: number = 6;
   tvshows : tv[] = [];
   userLogStatus: any;
   tvOrMovie: any;
@@ -29,18 +33,14 @@ export class DashboardComponent implements OnInit {
     private tvormovieselected : HeadtvmovieService
   ) {}
 
-
   ngOnInit(): void {
-    this.userLoggedInData.currentStatus.subscribe(userLogStatus => this.userLogStatus = userLogStatus)
-    this.tvormovieselected.currentStatus.subscribe(tvOrMovie => this.tvOrMovie = tvOrMovie)
-
+    this.userLoggedInData.currentStatus.subscribe((userLogStatus) => (this.userLogStatus = userLogStatus));
+    this.tvormovieselected.currentStatus.subscribe(tvOrMovie => this.tvOrMovie = tvOrMovie);
     console.log("dashboard says: "+this.tvOrMovie);
-    
-   // console.log();
     if (this.userLogStatus) {
-        this.movieObj.getAllMovies().subscribe((data) => {
-        this.movies = data;
-     
+      this.movieObj.getAllMovies().subscribe((data) => {
+        this.allMovies = data;
+        this.setMoviesForPage(0, this.moviesCountOnInitialLoad);
       });
 
       this.tvObj.getAllTvShows().subscribe((data) => {
@@ -50,35 +50,19 @@ export class DashboardComponent implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
-
-
-
-
-
   }
 
+  setMoviesForPage(startIndex: number, count: number) {
+    let endIndex = startIndex + count;
+    endIndex =
+      endIndex >= this.allMovies.length ? this.allMovies.length - 1 : endIndex;
+    const moviesToShow = this.allMovies.slice(startIndex, endIndex);
+    this.filteredMovies = [...this.filteredMovies, ...moviesToShow];
+    console.log(this.filteredMovies);
+  }
 
-  // isTv : boolean = false;
-  // isMovie: boolean = true;
-
-
-
+  showMoreMovies() {
+    const startIndex = this.filteredMovies.length;
+    this.setMoviesForPage(startIndex, this.moviesToShow);
+  }
 }
-
-
-  // if(this.tvOrMovie == "TV"){
-  //   this.isTv = true;
-  //   this.isMovie = false;
-  //   console.log("dashboard now says: "+this.tvOrMovie);
-  // }
-
-  // else if (this.tvOrMovie == "MOVIE") {
-  //   this.isTv = false;
-  //   this.isMovie = true;
-  //   console.log("dashboard now says: "+this.tvOrMovie);
-  // }
-
-
-
-
-
