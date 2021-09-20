@@ -12,4 +12,10 @@ export class MoviesService {
   getAllMovies(): Observable<Movie[]> {
     return this.http.get<Movie[]>('http://localhost:3000/movies');
   }
+
+  getAllTvShows(): Observable<Movie[]> {
+    return this.http.get<Movie[]>('http://localhost:3000/tvshows');
+  }
+
+
 }

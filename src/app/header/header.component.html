@@ -7,14 +7,28 @@
     </button> -->
   <div class="collapse navbar-collapse text-navbar-style" id="navbarMenu">
     <ul class="navbar-nav ml-auto">
+
       <div>
         <li class="nav-right-icon-vert">
-          <a routerLink="/home/{{ userId }}" class="user-icon">
+          <a routerLink="/home/{{ userId }}" class="user-icon" (click)="changeToMovie()">
             <i class="fas fa-video fa-2x"></i>
             <div>All Movies</div></a
           >
         </li>
       </div>
+
+      <div>
+        <li class="nav-right-icon-vert">
+          <a routerLink="/home/{{ userId }}" class="user-icon" (click)="changeToTv()">
+            <i class="fas fa-tv fa-2x"></i>
+            <div>All TV Shows</div></a
+          >
+        </li>
+      </div>
+
+
+
+
       <div>
         <li class="nav-right-icon-vert">
           <a routerLink="/profile/{{ userId }}" class="user-icon"
@@ -31,6 +45,10 @@
           <output></output
         ></a>
       </li>
+
+
+
+
     </ul>
   </div>
 </nav>
