@@ -1,9 +1,30 @@
 <app-header (searchcriteria)= "searchThis($event)"></app-header>
-<div class="row bg" id="movie-list">
-  <div
-    class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
-    *ngFor="let movie of movies | filter:searchkey">
-    <app-movie-items [movie]="movie"></app-movie-items>
+
+<div *ngIf="tvOrMovie === 'MOVIE'">
+  <div class="row bg" id="movie-list">
+    <div 
+      class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
+      *ngFor="let movie of filteredMovies | filter:searchkey; let i = index"
+    >
+      <app-movie-items [movie]="movie" [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id) >=0" (addOrRemoveFavorites)="addToFavs($event)"></app-movie-items>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="tvOrMovie === 'TV'">
+  <div class="row bg" id="movie-list">
+    <div
+      class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
+      *ngFor="let movie of tvshows; let i = index"
+    >
+      <app-movie-items [movie]="movie"></app-movie-items>
+    </div>
+  </div>
+</div>
+
+<div class="row bg justify-content-end no-gutters" *ngIf="tvOrMovie === 'MOVIE'">
+  <div class="col-1 mb-3">
+    <a (click)="showMoreMovies()" class="more-link">See More</a>
   </div>
 </div>
 <app-footer></app-footer>

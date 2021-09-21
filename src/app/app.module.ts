@@ -19,6 +19,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { HttpClientModule } from '@angular/common/http';
 import { TrailerComponent } from './movies/trailer/trailer.component';
 import { SafePipe } from 'src/safe.pipe';
+import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { SafePipe } from 'src/safe.pipe';
     ProfileComponent,
     TrailerComponent,
     SafePipe
+    TvshowsItemsComponent
   ],
   imports: [
     BrowserModule,
