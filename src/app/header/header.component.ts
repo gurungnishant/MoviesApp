@@ -2,7 +2,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { HeadtvmovieService } from 'src/app/services/headtvmovie.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-
+import { Input, Output, EventEmitter } from '@angular/core';
 
 
 @Component({
@@ -11,11 +11,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Output() searchcriteria = new EventEmitter<String>();
+
   userId: any;
   userLogStatus: any;
+  searchword: any;
   tvOrMovie: any;
   
-
   constructor(
     private route: ActivatedRoute,
     private userService: UsersService,
@@ -40,8 +42,6 @@ export class HeaderComponent implements OnInit {
     this.tvormovieselected.changeTvOrMovie("TV");
     console.log("you pressed change to TV")
   }
-
-
   
   logOutUser() {
     //this.userService.logoutUser();
@@ -50,5 +50,9 @@ export class HeaderComponent implements OnInit {
 
     
     this.router.navigate(['/login']);
+  }
+
+  searchThis(){
+    this.searchcriteria.emit(this.searchword)
   }
 }

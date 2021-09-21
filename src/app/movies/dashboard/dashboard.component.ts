@@ -11,7 +11,10 @@ import { tv } from '../tv';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
+
 export class DashboardComponent implements OnInit {
+  searchkey: any
+  movies: Movie[] = [];
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
   moviesCountOnInitialLoad: number = 12;
@@ -50,6 +53,10 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  searchThis(arg:any){
+     this.searchkey = arg
+     console.log(this.searchkey)
+  }
   addToFavs(movieId: string) {
     if (this.currentUserFavs.length > 0) {
       if (this.currentUserFavs.indexOf(movieId) < 0) {

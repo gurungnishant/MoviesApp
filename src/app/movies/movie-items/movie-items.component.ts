@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { DetailsComponent } from '../details/details.component';
 import { Movie } from '../movie';
+import { TrailerComponent } from '../trailer/trailer.component';
 
 @Component({
   selector: 'app-movie-items',
@@ -27,7 +28,16 @@ export class MovieItemsComponent implements OnInit {
       class: 'gray modal-lg modal-dialog-centered',
     });
   }
-
+  
+  playTrailer(arg : any){
+    const initialState = {
+      movieObj: this.movie,
+    };
+    this.bsModalRef = this.modalService.show(TrailerComponent, {
+      initialState,
+      class: 'gray modal-lg modal-dialog-centered',
+    });
+  }
   addToFavs() {
     this.addOrRemoveFavorites.emit(this.movie.id);
   }

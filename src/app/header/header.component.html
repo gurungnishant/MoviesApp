@@ -2,12 +2,14 @@
   <a routerLink="/home/{{ userId }}" class="text-navbar-movie-style">
     <i class="fas fa-film fa-2x" style="padding-right: 10px"></i> Movies-App</a
   >
-  <!-- <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
   <div class="collapse navbar-collapse text-navbar-style" id="navbarMenu">
     <ul class="navbar-nav ml-auto">
-
+      <div class="items-wrapper">
+        <form class="form-inline d-flex justify-content-center md-form form-sm">
+          <input class="form-control form-control-md mr-3 w-95" type="text" placeholder="Search" aria-label="Search" name="searchbar" [(ngModel)]="searchword"(input)="searchThis()">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </form>
+      </div>
       <div>
         <li class="nav-right-icon-vert">
           <a routerLink="/home/{{ userId }}" class="user-icon" (click)="changeToMovie()">
