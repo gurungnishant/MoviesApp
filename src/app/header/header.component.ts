@@ -1,6 +1,8 @@
 import { UsersService } from 'src/app/services/users.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-header',
@@ -8,8 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  @Output() searchcriteria = new EventEmitter<String>();
+
   userId: any;
   userLogStatus: any;
+  searchword: any
   constructor(
     private route: ActivatedRoute,
     private userService: UsersService,
@@ -27,5 +32,9 @@ export class HeaderComponent implements OnInit {
     this.userLoggedInData.changeMessage(false);
     
     this.router.navigate(['/login']);
+  }
+
+  searchThis(){
+    this.searchcriteria.emit(this.searchword)
   }
 }

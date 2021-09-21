@@ -10,6 +10,7 @@ import { Movie } from '../movie';
   styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+  searchkey: any
   movies: Movie[] = [];
   userLogStatus: any;
 
@@ -30,5 +31,10 @@ export class DashboardComponent implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
+  }
+
+  searchThis(arg:any){
+     this.searchkey = arg
+     console.log(this.searchkey)
   }
 }

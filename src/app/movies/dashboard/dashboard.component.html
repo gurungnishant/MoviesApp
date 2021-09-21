@@ -1,11 +1,9 @@
-<app-header></app-header>
+<app-header (searchcriteria)= "searchThis($event)"></app-header>
 <div class="row bg" id="movie-list">
   <div
     class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
-    *ngFor="let movie of movies; let i = index"
-  >
+    *ngFor="let movie of movies | filter:searchkey">
     <app-movie-items [movie]="movie"></app-movie-items>
   </div>
 </div>
-<!-- <div *ngFor="let movie of movies; let i = index"></div> -->
 <app-footer></app-footer>

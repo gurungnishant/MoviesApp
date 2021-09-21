@@ -11,12 +11,14 @@ import { DetailsComponent } from './movies/details/details.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { LoginComponent } from './movies/login/login.component';
 import { UsersService } from './services/users.service';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { ProfileComponent } from './users/profile/profile.component';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { HttpClientModule } from '@angular/common/http';
+import { TrailerComponent } from './movies/trailer/trailer.component';
+import { SafePipe } from 'src/safe.pipe';
 
 @NgModule({
   declarations: [
@@ -28,12 +30,15 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     ProfileComponent,
+    TrailerComponent,
+    SafePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    Ng2SearchPipeModule,
     FormsModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),

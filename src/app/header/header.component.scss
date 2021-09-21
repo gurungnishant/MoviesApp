@@ -22,10 +22,16 @@
 
 
 .nav-right-icon-vert{
-    vertical-align: middle;
+    padding-top: 14px;
     padding-right: 45px;
 }
-
+.fa-search{
+    font-size: x-large;
+    opacity: 70%;
+}
+.fa-search:hover{
+    opacity: 100%;
+}
 
 
 .user-icon{
@@ -34,6 +40,7 @@
     padding-right: 20px;
     opacity: 70%;
     padding-left: 30px;
+    font-size: small;
 }
 
 .user-icon:hover{
@@ -45,12 +52,19 @@
     padding-right: 20px;
     opacity: 70%;
     padding-left: 15px;
+    font-size: small;
 }
 
 .signout-icon:hover{
     opacity:100%;
 }
-
+.form-control{
+    width: 300px;
+}
+.items-wrapper{
+    padding-top: 16px;
+    padding-right: 23px;
+}
 
 
 
