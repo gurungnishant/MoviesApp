@@ -11,33 +11,41 @@ import { tv } from '../tv';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-
 export class DashboardComponent implements OnInit {
-  searchkey: any
+  searchkey: any;
   movies: Movie[] = [];
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
   moviesCountOnInitialLoad: number = 12;
   moviesToShow: number = 6;
-  tvshows : tv[] = [];
+  tvshows: tv[] = [];
   userLogStatus: any;
   currentUserFavs: any[] = [];
   tvOrMovie: any;
-  
-//tvormovieselected is a string that determines which movie or tv items to show
+  hideShowMore: boolean = false;
+
+  //tvormovieselected is a string that determines which movie or tv items to show
   constructor(
     private movieObj: MoviesService,
     private tvObj: MoviesService,
     private userService: UsersService,
     private router: Router,
-    private tvormovieselected : HeadtvmovieService
+    private tvormovieselected: HeadtvmovieService
   ) {}
 
   ngOnInit(): void {
-    this.userService.currentStatus.subscribe((userLogStatus) => (this.userLogStatus = userLogStatus));
-    this.tvormovieselected.currentStatus.subscribe(tvOrMovie => this.tvOrMovie = tvOrMovie);
-    this.currentUserFavs = this.userService.currentUser['favorites'] || [];
-        
+    this.userService.currentStatus.subscribe(
+      (userLogStatus) => (this.userLogStatus = userLogStatus)
+    );
+    this.tvormovieselected.currentStatus.subscribe(
+      (tvOrMovie) => (this.tvOrMovie = tvOrMovie)
+    );
+    this.currentUserFavs = this.userService.currentUser
+      ? this.userService.currentUser['favorites']
+        ? this.userService.currentUser['favorites']
+        : []
+      : [];
+
     if (this.userLogStatus) {
       this.movieObj.getAllMovies().subscribe((data) => {
         this.allMovies = data;
@@ -47,22 +55,29 @@ export class DashboardComponent implements OnInit {
       this.tvObj.getAllTvShows().subscribe((data) => {
         this.tvshows = data;
       });
-
     } else {
       this.router.navigate(['/login']);
     }
   }
 
-  searchThis(arg:any){
-     this.searchkey = arg
-     console.log(this.searchkey)
+  searchThis(arg: any) {
+    if (arg) {
+      this.searchkey = arg;
+      this.hideShowMore = true;
+      this.filteredMovies = [...this.allMovies];
+      console.log(this.searchkey);
+    } else {
+      this.searchkey = '';
+      this.hideShowMore = false;
+      this.filteredMovies = this.allMovies.slice(0, 12);
+    }
   }
+
   addToFavs(movieId: string) {
     if (this.currentUserFavs.length > 0) {
       if (this.currentUserFavs.indexOf(movieId) < 0) {
-        this.currentUserFavs.push(movieId)
-      }
-      else {
+        this.currentUserFavs.push(movieId);
+      } else {
         const index = this.currentUserFavs.indexOf(movieId);
         this.currentUserFavs.splice(index, 1);
       }
@@ -70,7 +85,7 @@ export class DashboardComponent implements OnInit {
       this.currentUserFavs.push(movieId);
     }
     console.log(this.currentUserFavs);
-    this.userService.addToFavs(this.currentUserFavs).subscribe(data => {
+    this.userService.addToFavs(this.currentUserFavs).subscribe((data) => {
       console.log(data);
     });
   }
@@ -89,4 +104,3 @@ export class DashboardComponent implements OnInit {
     this.setMoviesForPage(startIndex, this.moviesToShow);
   }
 }
-

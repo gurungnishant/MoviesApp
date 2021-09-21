@@ -32,8 +32,8 @@ import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.comp
     FooterComponent,
     ProfileComponent,
     TrailerComponent,
-    SafePipe
-    TvshowsItemsComponent
+    SafePipe,
+    TvshowsItemsComponent,
   ],
   imports: [
     BrowserModule,

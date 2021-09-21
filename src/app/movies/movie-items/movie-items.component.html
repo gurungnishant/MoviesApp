@@ -1,14 +1,28 @@
 <div class="card">
-  <i class="far fa-play-circle play-icon" (click)="playTrailer(movie.rank)" title="play trailer"></i>
-  <i *ngIf="isFav" class="fas fa-heart fav-icon" (click)="removeFromFavs()"></i>
-  <i *ngIf="!isFav" class="far fa-heart fav-icon" (click)="addToFavs()"></i>
+  <i
+    class="far fa-play-circle play-icon"
+    (click)="playTrailer(movie.rank)"
+    title="play trailer"
+  ></i>
+  <i
+    *ngIf="isFav"
+    class="fas fa-heart fav-icon"
+    title="Remove"
+    (click)="removeFromFavs()"
+  ></i>
+  <i
+    *ngIf="!isFav"
+    class="far fa-heart fav-icon"
+    title="Add To Favs"
+    (click)="addToFavs()"
+  ></i>
   <img [src]="movie.image" class="card-img-top" alt="..." />
 
   <div class="card-body">
     <p class="subtitle">{{ movie.year }}</p>
     <h5 class="card-title">{{ movie.title }}</h5>
-    <button class="btn button-style" (click)="openModalWithComponent(movie.id)">Movie Details</button>
+    <button class="btn button-style" (click)="openModalWithComponent(movie.id)">
+      Movie Details
+    </button>
   </div>
-
 </div>
-
