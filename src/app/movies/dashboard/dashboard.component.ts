@@ -1,10 +1,11 @@
 import { Router } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import { HeadtvmovieService } from 'src/app/services/headtvmovie.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MoviesService } from '../../services/movies.service';
 import { Movie } from '../movie';
 import { tv } from '../tv';
+import { HeaderComponent } from 'src/app/header/header.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -23,6 +24,9 @@ export class DashboardComponent implements OnInit {
   currentUserFavs: any[] = [];
   tvOrMovie: any;
   hideShowMore: boolean = false;
+  showLoader: boolean = false;
+  showNotFound: boolean = false;
+  @ViewChild(HeaderComponent, { static: false }) header: HeaderComponent;
 
   //tvormovieselected is a string that determines which movie or tv items to show
   constructor(
@@ -34,9 +38,26 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.userService.currentStatus.subscribe(
-      (userLogStatus) => (this.userLogStatus = userLogStatus)
-    );
+    this.userService.currentStatus.subscribe((userLogStatus) => {
+      this.userLogStatus = userLogStatus;
+      this.showLoader = true;
+      setTimeout(() => {
+        if (this.userLogStatus) {
+          this.movieObj.getAllMovies().subscribe((data) => {
+            this.allMovies = data;
+            this.setMoviesForPage(0, this.moviesCountOnInitialLoad);
+            this.showLoader = false;
+          });
+
+          this.tvObj.getAllTvShows().subscribe((data) => {
+            this.tvshows = data;
+            this.showLoader = false;
+          });
+        } else {
+          this.router.navigate(['/login']);
+        }
+      }, 2000);
+    });
     this.tvormovieselected.currentStatus.subscribe(
       (tvOrMovie) => (this.tvOrMovie = tvOrMovie)
     );
@@ -45,19 +66,6 @@ export class DashboardComponent implements OnInit {
         ? this.userService.currentUser['favorites']
         : []
       : [];
-
-    if (this.userLogStatus) {
-      this.movieObj.getAllMovies().subscribe((data) => {
-        this.allMovies = data;
-        this.setMoviesForPage(0, this.moviesCountOnInitialLoad);
-      });
-
-      this.tvObj.getAllTvShows().subscribe((data) => {
-        this.tvshows = data;
-      });
-    } else {
-      this.router.navigate(['/login']);
-    }
   }
 
   searchThis(arg: any) {
@@ -65,7 +73,6 @@ export class DashboardComponent implements OnInit {
       this.searchkey = arg;
       this.hideShowMore = true;
       this.filteredMovies = [...this.allMovies];
-      console.log(this.searchkey);
     } else {
       this.searchkey = '';
       this.hideShowMore = false;
@@ -102,5 +109,12 @@ export class DashboardComponent implements OnInit {
   showMoreMovies() {
     const startIndex = this.filteredMovies.length;
     this.setMoviesForPage(startIndex, this.moviesToShow);
+  }
+
+  onGoToHome(event: boolean) {
+    if (!event) {
+      this.header.searchword = '';
+      this.searchThis('');
+    }
   }
 }
