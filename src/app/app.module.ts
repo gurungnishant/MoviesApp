@@ -20,6 +20,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrailerComponent } from './movies/trailer/trailer.component';
 import { SafePipe } from 'src/safe.pipe';
 import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.component';
+import { LoaderComponent } from './utils/loader/loader.component';
+import { NotFoundComponent } from './utils/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,8 @@ import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.comp
     TrailerComponent,
     SafePipe,
     TvshowsItemsComponent,
+    LoaderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
