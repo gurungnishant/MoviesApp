@@ -12,6 +12,8 @@ import { HeaderComponent } from 'src/app/header/header.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
+
+
 export class DashboardComponent implements OnInit {
   searchkey: any;
   movies: Movie[] = [];
@@ -111,7 +113,7 @@ export class DashboardComponent implements OnInit {
     const startIndex = this.filteredMovies.length;
     this.setMoviesForPage(startIndex, this.moviesToShow);
   }
-
+  
   onGoToHome(event: boolean) {
     if (!event) {
       this.header.searchword = '';

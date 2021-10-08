@@ -1,0 +1,38 @@
+<div class="hero">
+<ng-container *ngFor="let slider of filteredMovies; let i = index">
+
+
+
+    <div class="slider" *ngIf="current == i" @fade>
+        <div class = "left">
+            <a class="glow-icon" (click)=" prevBannerMovie()"> <i class="fa fa-angle-left fa-2x" aria-hidden="true"></i> </a>
+        </div>
+<div class="center">
+        <div class="backdrop">
+            <img alt="{{slider?.title}}" class="lazyload image" src="{{slider?.image}}">
+        </div>
+    </div>
+        <div class="pane">
+            <div>
+                <h1 class="name" [routerLink]="['/movies/', slider.id]">
+                    {{slider?.title}}
+                </h1>
+                <div class="meta">
+                    <div class="info">
+                    
+                        <span>Rating: {{slider?.imDbRating}} </span>
+                        <span>Year: {{slider?.year}}</span>
+                    </div>
+                </div>
+                <div class="desc">
+                    Overview : Lorem ipsum dolor sit, amet consectetur adipisicing elit. Esse placeat voluptas odit. Repellendus sequi earum voluptatem similique sapiente corporis, consequuntur nobis hic numquam facere nulla veniam alias sint amet quisquam.
+                </div>
+            </div>
+        </div>
+        <div class = "right">
+            <a class="glow-icon" (click)=" nextBannerMovie()"> <i class="fa fa-angle-right fa-2x" aria-hidden="true"></i> </a>
+        </div>
+
+    </div>
+    </ng-container>
+</div>
