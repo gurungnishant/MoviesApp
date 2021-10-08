@@ -24,8 +24,20 @@ export class SliderComponent implements OnInit {
 
   }
 
-NextBannerMovie(){
+nextBannerMovie(){
+  
   this.current = ++this.current % this.filteredMovies.length;
+}
+
+prevBannerMovie(){
+if(this.current < 1){
+
+  this.current = this.filteredMovies.length-1;
+
+} else
+
+  this.current = this.current - 1;
+
 }
 
 
