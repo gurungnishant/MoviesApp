@@ -62,10 +62,11 @@ export class DashboardComponent implements OnInit {
 
   searchThis(arg: any) {
     if (arg) {
+      arg = arg.toString()
+      arg = arg.toLowerCase()
       this.searchkey = arg;
       this.hideShowMore = true;
       this.filteredMovies = [...this.allMovies];
-      console.log(this.searchkey);
     } else {
       this.searchkey = '';
       this.hideShowMore = false;
@@ -96,7 +97,6 @@ export class DashboardComponent implements OnInit {
       endIndex >= this.allMovies.length ? this.allMovies.length - 1 : endIndex;
     const moviesToShow = this.allMovies.slice(startIndex, endIndex);
     this.filteredMovies = [...this.filteredMovies, ...moviesToShow];
-    console.log(this.filteredMovies);
   }
 
   showMoreMovies() {

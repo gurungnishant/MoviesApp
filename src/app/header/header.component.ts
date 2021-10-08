@@ -53,6 +53,8 @@ export class HeaderComponent implements OnInit {
   }
 
   searchThis(){
+    // this.searchword = this.searchword.toString()
+    // this.searchword = this.searchword.toLowerCase()
     this.searchcriteria.emit(this.searchword)
   }
 }
