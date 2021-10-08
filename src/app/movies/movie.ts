@@ -10,5 +10,6 @@ export interface Movie {
     crew?: string;
     imDbRating?: string;
     imDbRatingCount?: string;
+    trailerLink?:string;
 }
 

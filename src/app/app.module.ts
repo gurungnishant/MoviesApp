@@ -21,8 +21,9 @@ import { TrailerComponent } from './movies/trailer/trailer.component';
 import { SafePipe } from 'src/safe.pipe';
 import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.component';
 import { SliderComponent } from './slider/slider.component';
-
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { LoaderComponent } from './utils/loader/loader.component';
+import { NotFoundComponent } from './utils/not-found/not-found.component';
 
 
 @NgModule({
@@ -39,6 +40,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     SafePipe,
     TvshowsItemsComponent,
     SliderComponent,
+    LoaderComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,

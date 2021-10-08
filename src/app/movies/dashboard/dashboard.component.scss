@@ -4,36 +4,38 @@
 //     column-gap: 2%;
 //     row-gap: 2%;
 // }
-
 #movie-list.row {
-  margin: 0px;
-  padding-bottom: 30px;
+    margin: 0px;
+    padding-bottom: 30px;
 }
 
 a.more-link {
-  color: #fff;
-  font-size: 14px;
-  padding: 10px;
-  margin-bottom: 12px;
-  &:hover {
     color: #fff;
-    text-decoration: underline;
-    cursor: pointer;
-  }
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 12px;
+    &:hover {
+        color: #fff;
+        text-decoration: underline;
+        cursor: pointer;
+    }
 }
 
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.bg {
+        height: 75vh;
+    }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.not-found-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &.bg {
+        height: 75vh;
+    }
+}
 
