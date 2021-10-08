@@ -6,11 +6,16 @@ import { MoviesService } from '../../services/movies.service';
 import { Movie } from '../movie';
 import { tv } from '../tv';
 
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
+
 })
+
+
 export class DashboardComponent implements OnInit {
   searchkey: any;
   movies: Movie[] = [];
@@ -23,6 +28,9 @@ export class DashboardComponent implements OnInit {
   currentUserFavs: any[] = [];
   tvOrMovie: any;
   hideShowMore: boolean = false;
+
+
+
 
   //tvormovieselected is a string that determines which movie or tv items to show
   constructor(
@@ -58,6 +66,9 @@ export class DashboardComponent implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
+
+
+
   }
 
   searchThis(arg: any) {
@@ -103,4 +114,14 @@ export class DashboardComponent implements OnInit {
     const startIndex = this.filteredMovies.length;
     this.setMoviesForPage(startIndex, this.moviesToShow);
   }
+
+
+
+
+
+
+
+
+
+
 }

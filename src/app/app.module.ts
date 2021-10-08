@@ -20,6 +20,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { TrailerComponent } from './movies/trailer/trailer.component';
 import { SafePipe } from 'src/safe.pipe';
 import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.component';
+import { SliderComponent } from './slider/slider.component';
+
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+
 
 @NgModule({
   declarations: [
@@ -34,6 +38,7 @@ import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.comp
     TrailerComponent,
     SafePipe,
     TvshowsItemsComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ import { TvshowsItemsComponent } from './movies/tvshows-items/tvshows-items.comp
     FormsModule,
     ModalModule.forRoot(),
     TabsModule.forRoot(),
+    CarouselModule.forRoot(),
   ],
   providers: [UsersService],
   bootstrap: [AppComponent],

@@ -1,6 +1,14 @@
 <app-header (searchcriteria)="searchThis($event)"></app-header>
 
+ 
 <div *ngIf="tvOrMovie === 'MOVIE'">
+
+
+  <app-slider [filteredMovies]="filteredMovies">
+  </app-slider>
+
+  
+  
   <div class="row bg" id="movie-list">
     <div
       class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
@@ -16,6 +24,8 @@
 </div>
 
 <div *ngIf="tvOrMovie === 'TV'">
+  <app-slider [filteredMovies]="tvshows">
+  </app-slider>
   <div class="row bg" id="movie-list">
     <div
       class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
