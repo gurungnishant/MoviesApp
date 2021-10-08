@@ -34,6 +34,7 @@ $breakpoint-xlarge: 1400px;
   flex-direction: column;
   color: white;
   padding-left: 20px;
+
 }
 .right{
   display: flex;
@@ -53,12 +54,13 @@ $breakpoint-xlarge: 1400px;
 .glow-icon{
   color: rgb(255, 255, 255);
   opacity: 70%;
+  cursor: pointer;
 }
 
 
 .glow-icon:hover{
   opacity:100%;
-
+  cursor: pointer;
 }
 
 
