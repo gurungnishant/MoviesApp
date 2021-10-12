@@ -8,4 +8,5 @@ export interface tv {
     crew?: string;
     imDbRating?: string;
     imDbRatingCount?: string;
+    trailerLink?:string;
 }

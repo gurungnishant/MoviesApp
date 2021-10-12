@@ -28,6 +28,7 @@ export class ProfileComponent implements OnInit {
       }
       if (this.user.favorites) {
         this.getUserFavs();
+        this.getUserFavs2();
       }
     });
   }
@@ -44,6 +45,22 @@ export class ProfileComponent implements OnInit {
       console.log(this.favorites);
     })
   }
+
+
+  getUserFavs2() {
+    this.movieService.getAllTvShows().subscribe(movies => {
+      const userFavs = this.user.favorites;
+      userFavs.forEach((fav: string) => {
+        const movie = movies.find(movie => movie.id === fav);
+        if (movie) {
+          this.favorites.push(movie)
+        }
+      })
+      console.log(this.favorites);
+    })
+  }
+
+
 
   removeFromFavs(movieId: string) {
     const index = this.favorites.findIndex(movie => movie.id === movieId);

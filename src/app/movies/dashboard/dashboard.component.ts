@@ -19,8 +19,11 @@ export class DashboardComponent implements OnInit {
   movies: Movie[] = [];
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
+  filteredTvShows: tv[] = [];
+
   moviesCountOnInitialLoad: number = 12;
   moviesToShow: number = 6;
+  tvToShow = 6;
   tvshows: tv[] = [];
   userLogStatus: any;
   currentUserFavs: any[] = [];
@@ -53,6 +56,7 @@ export class DashboardComponent implements OnInit {
 
           this.tvObj.getAllTvShows().subscribe((data) => {
             this.tvshows = data;
+            this.setTvForPage(0, this.moviesCountOnInitialLoad);
             this.showLoader = false;
           });
         } else {
@@ -77,12 +81,20 @@ export class DashboardComponent implements OnInit {
       this.searchkey = arg;
       this.hideShowMore = true;
       this.filteredMovies = [...this.allMovies];
+      this.filteredTvShows = [...this.tvshows];
     } else {
       this.searchkey = '';
       this.hideShowMore = false;
       this.filteredMovies = this.allMovies.slice(0, 12);
+      this.filteredTvShows = this.tvshows.slice(0, 12);
     }
   }
+
+
+
+
+
+
 
   addToFavs(movieId: string) {
     if (this.currentUserFavs.length > 0) {
@@ -101,18 +113,42 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+
+
+  //tv shows see more function   begin----
+  setTvForPage(startIndex: number, count: number) {
+    let endIndex = startIndex + count;
+    endIndex =
+      endIndex >= this.tvshows.length ? this.tvshows.length - 1 : endIndex;
+    const tvToShow = this.tvshows.slice(startIndex, endIndex);
+    this.filteredTvShows = [...this.filteredTvShows, ...tvToShow];
+    console.log(this.filteredTvShows);
+  }
+
+  showMoreTvShows() {
+    const startIndex = this.filteredTvShows.length;
+    this.setTvForPage(startIndex, this.tvToShow);
+  }
+
+//tv shows see more feature end -----
+
   setMoviesForPage(startIndex: number, count: number) {
     let endIndex = startIndex + count;
     endIndex =
       endIndex >= this.allMovies.length ? this.allMovies.length - 1 : endIndex;
     const moviesToShow = this.allMovies.slice(startIndex, endIndex);
     this.filteredMovies = [...this.filteredMovies, ...moviesToShow];
+    console.log(this.filteredMovies);
   }
 
   showMoreMovies() {
     const startIndex = this.filteredMovies.length;
     this.setMoviesForPage(startIndex, this.moviesToShow);
   }
+
+
+
+
   
   onGoToHome(event: boolean) {
     if (!event) {
