@@ -17,14 +17,15 @@
 </div>
 
 <div *ngIf="tvOrMovie === 'TV'">
-  <app-slider [filteredMovies]="tvshows"></app-slider>
+  <app-slider [filteredMovies]="filteredTvShows"></app-slider>
   <div class="row bg" id="movie-list">
     <div
       class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
-      *ngFor="let movie of tvshows; let i = index"
+      *ngFor="let movie of filteredTvShows; let i = index"
     >
       <app-movie-items [movie]="movie"   [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id)>= 0" (addOrRemoveFavorites)="addToFavs($event)"   ></app-movie-items>
     </div>
+</div>
 </div>
 
 <div class="row bg justify-content-end no-gutters" *ngIf="tvOrMovie === 'MOVIE' && !hideShowMore">
@@ -32,5 +33,12 @@
         <a (click)="showMoreMovies()" class="more-link">See More</a>
     </div>
 </div>
+
+<div class="row bg justify-content-end no-gutters" *ngIf="tvOrMovie === 'TV' && !hideShowMore">
+  <div class="col-1 mb-3">
+      <a (click)="showMoreTvShows()" class="more-link">See More</a>
+  </div>
+</div>
+
 
 <app-footer></app-footer>
