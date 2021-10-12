@@ -1,52 +1,81 @@
 <app-header (searchcriteria)="searchThis($event)"></app-header>
 
 <div class="loader-container bg" *ngIf="showLoader">
-    <app-loader></app-loader>
+  <app-loader></app-loader>
 </div>
- 
-<div *ngIf="tvOrMovie === 'MOVIE'">
-  <app-slider [filteredMovies]="filteredMovies"></app-slider>  
 
-    <div class="row bg" id="movie-list" *ngIf="( filteredMovies | filter: searchkey) as result">
-        <div class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4" *ngFor="let movie of result">
-            
-          <app-movie-items [movie]=" movie " [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id)>= 0" (addOrRemoveFavorites)="addToFavs($event)"></app-movie-items>
-        </div>
-        <div class="bg not-found-container" *ngIf="result.length===0">
-            <app-not-found (goToHomeEmitter)="onGoToHome($event)"></app-not-found>
-        </div>
+<div *ngIf="tvOrMovie === 'MOVIE'">
+  <app-slider [filteredMovies]="filteredMovies" *ngIf="showSlider"></app-slider>
+
+  <div
+    class="row bg"
+    id="movie-list"
+    *ngIf="filteredMovies | filter: searchkey as result"
+  >
+    <div
+      class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
+      *ngFor="let movie of result"
+    >
+      <app-movie-items
+        [movie]="movie"
+        [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id) >= 0"
+        (addOrRemoveFavorites)="addToFavs($event)"
+      ></app-movie-items>
     </div>
+    <div
+      class="bg not-found-container"
+      *ngIf="result.length === 0 && !showLoader"
+    >
+      <app-not-found (goToHomeEmitter)="onGoToHome($event)"></app-not-found>
+    </div>
+  </div>
 </div>
 
 <div *ngIf="tvOrMovie === 'TV'">
-  <app-slider [filteredMovies]="filteredTvShows"></app-slider>
-  <div class="row bg" id="movie-list" *ngIf="( filteredTvShows | filter: searchkey) as result">
-    <div class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"  *ngFor="let movie of result; let i = index">
-
-      <app-movie-items [movie]="movie"   [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id)>= 0" (addOrRemoveFavorites)="addToFavs($event)"   ></app-movie-items>
+  <app-slider
+    [filteredMovies]="filteredTvShows"
+    *ngIf="showSlider"
+  ></app-slider>
+  <div
+    class="row bg"
+    id="movie-list"
+    *ngIf="filteredTvShows | filter: searchkey as result"
+  >
+    <div
+      class="col-lg-2 col-md-3 col-sm-4 col-6 mt-4"
+      *ngFor="let movie of result; let i = index"
+    >
+      <app-movie-items
+        [movie]="movie"
+        [isFav]="currentUserFavs && currentUserFavs.indexOf(movie.id) >= 0"
+        (addOrRemoveFavorites)="addToFavs($event)"
+      ></app-movie-items>
     </div>
-    <div class="bg not-found-container" *ngIf="result.length===0">
+    <div
+      class="bg not-found-container"
+      *ngIf="result.length === 0 && !showLoader"
+    >
       <app-not-found (goToHomeEmitter)="onGoToHome($event)"></app-not-found>
-  </div>
-
-
-</div>
-</div>
-
-
-
-
-<div class="row bg justify-content-end no-gutters" *ngIf="tvOrMovie === 'MOVIE' && !hideShowMore">
-    <div class="col-1 mb-3">
-        <a (click)="showMoreMovies()" class="more-link">See More</a>
     </div>
-</div>
-
-<div class="row bg justify-content-end no-gutters" *ngIf="tvOrMovie === 'TV' && !hideShowMore">
-  <div class="col-1 mb-3">
-      <a (click)="showMoreTvShows()" class="more-link">See More</a>
   </div>
 </div>
 
+<div
+  class="row bg justify-content-end no-gutters"
+  *ngIf="tvOrMovie === 'MOVIE' && !showLoader && !searchkey"
+>
+  <div class="col-1 mb-3">
+    <a (click)="showMoreMovies()" class="more-link">See More</a>
+  </div>
+</div>
+
+<div
+  class="row bg justify-content-end no-gutters"
+  *ngIf="tvOrMovie === 'TV' && !showLoader && !searchkey"
+>
+  <div class="col-1 mb-3">
+    <a (click)="showMoreTvShows()" class="more-link">See More</a>
+  </div>
+</div>
 
 <app-footer></app-footer>

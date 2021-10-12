@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs'
+import { BehaviorSubject, Observable } from 'rxjs';
 
 let checkstatus: any[] = [];
 let userdata: any[] = [
@@ -63,19 +63,21 @@ export class UsersService {
   private isLoggedin: BehaviorSubject<any> = new BehaviorSubject(false);
   currentStatus = this.isLoggedin.asObservable();
 
-
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   changeMessage(message: boolean) {
-    this.isLoggedin.next(message)
-    console.log(this.isLoggedin)
+    this.isLoggedin.next(message);
+    console.log(this.isLoggedin);
     if (!message) {
       this.currentUser = null;
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('currentUser');
+      localStorage.removeItem('currentUserId');
     }
   }
 
   getUsers(): Observable<any[]> {
-    return this.http.get<any[]>("http://localhost:3000/users");
+    return this.http.get<any[]>('http://localhost:3000/users');
   }
 
   // getUsers(input_username: string, input_pwd: string) {
@@ -105,7 +107,9 @@ export class UsersService {
 
   setCurrentUser(user: any) {
     this.currentUser = user;
-    this.changeMessage(true);
+    localStorage.setItem('isLoggedIn', JSON.stringify(true));
+    localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem('currentUserId', JSON.stringify(user.id));
   }
 
   getUser(id: number) {
@@ -125,21 +129,17 @@ export class UsersService {
   //   this.isLoggedin = false;
   // }
 
-
   addToFavs(favoritesData: any) {
     const userId = this.currentUser.id;
-    this.setCurrentUser({ ...this.currentUser, favorites: [...favoritesData] })
-    return this.http.patch(`http://localhost:3000/users/${userId}`,
-      { "favorites": [...favoritesData] },
+    this.setCurrentUser({ ...this.currentUser, favorites: [...favoritesData] });
+    return this.http.patch(
+      `http://localhost:3000/users/${userId}`,
+      { favorites: [...favoritesData] },
       {
         headers: {
-          "Content-Type": "application/json"
-        }
-      })
+          'Content-Type': 'application/json',
+        },
+      }
+    );
   }
-
-
-
-
-
 }

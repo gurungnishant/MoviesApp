@@ -12,15 +12,13 @@ import { HeaderComponent } from 'src/app/header/header.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
 })
-
-
 export class DashboardComponent implements OnInit {
   searchkey: any;
   movies: Movie[] = [];
   allMovies: Movie[] = [];
   filteredMovies: Movie[] = [];
   filteredTvShows: tv[] = [];
-
+  showSlider: boolean = true;
   moviesCountOnInitialLoad: number = 12;
   moviesToShow: number = 6;
   tvToShow = 6;
@@ -45,9 +43,9 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.userService.currentStatus.subscribe((userLogStatus) => {
       this.userLogStatus = userLogStatus;
-      this.showLoader = true;
-      setTimeout(() => {
-        if (this.userLogStatus) {
+      if (this.userLogStatus) {
+        this.showLoader = true;
+        setTimeout(() => {
           this.movieObj.getAllMovies().subscribe((data) => {
             this.allMovies = data;
             this.setMoviesForPage(0, this.moviesCountOnInitialLoad);
@@ -59,10 +57,10 @@ export class DashboardComponent implements OnInit {
             this.setTvForPage(0, this.moviesCountOnInitialLoad);
             this.showLoader = false;
           });
-        } else {
-          this.router.navigate(['/login']);
-        }
-      }, 2000);
+        }, 2000);
+      } else {
+        this.router.navigate(['/login']);
+      }
     });
     this.tvormovieselected.currentStatus.subscribe(
       (tvOrMovie) => (this.tvOrMovie = tvOrMovie)
@@ -76,25 +74,21 @@ export class DashboardComponent implements OnInit {
 
   searchThis(arg: any) {
     if (arg) {
-      arg = arg.toString()
-      arg = arg.toLowerCase()
+      arg = arg.toString();
+      arg = arg.toLowerCase();
       this.searchkey = arg;
+      this.showSlider = false;
       this.hideShowMore = true;
       this.filteredMovies = [...this.allMovies];
       this.filteredTvShows = [...this.tvshows];
     } else {
       this.searchkey = '';
       this.hideShowMore = false;
+      this.showSlider = true;
       this.filteredMovies = this.allMovies.slice(0, 12);
       this.filteredTvShows = this.tvshows.slice(0, 12);
     }
   }
-
-
-
-
-
-
 
   addToFavs(movieId: string) {
     if (this.currentUserFavs.length > 0) {
@@ -113,8 +107,6 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-
-
   //tv shows see more function   begin----
   setTvForPage(startIndex: number, count: number) {
     let endIndex = startIndex + count;
@@ -130,7 +122,7 @@ export class DashboardComponent implements OnInit {
     this.setTvForPage(startIndex, this.tvToShow);
   }
 
-//tv shows see more feature end -----
+  //tv shows see more feature end -----
 
   setMoviesForPage(startIndex: number, count: number) {
     let endIndex = startIndex + count;
@@ -146,10 +138,6 @@ export class DashboardComponent implements OnInit {
     this.setMoviesForPage(startIndex, this.moviesToShow);
   }
 
-
-
-
-  
   onGoToHome(event: boolean) {
     if (!event) {
       this.header.searchword = '';
