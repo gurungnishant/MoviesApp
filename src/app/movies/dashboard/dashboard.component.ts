@@ -81,12 +81,20 @@ export class DashboardComponent implements OnInit {
       this.searchkey = arg;
       this.hideShowMore = true;
       this.filteredMovies = [...this.allMovies];
+      this.filteredTvShows = [...this.tvshows];
     } else {
       this.searchkey = '';
       this.hideShowMore = false;
       this.filteredMovies = this.allMovies.slice(0, 12);
+      this.filteredTvShows = this.tvshows.slice(0, 12);
     }
   }
+
+
+
+
+
+
 
   addToFavs(movieId: string) {
     if (this.currentUserFavs.length > 0) {
